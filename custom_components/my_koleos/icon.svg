@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="My Koleos LATAM">
+  <rect width="256" height="256" rx="56" fill="#101828"/>
+  <path d="M128 24 220 128 128 232 36 128 128 24Z" fill="none" stroke="#F8FAFC" stroke-width="15" stroke-linejoin="round"/>
+  <path d="M82 144c8-24 20-37 46-37s38 13 46 37" fill="none" stroke="#38BDF8" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="91" cy="156" r="10" fill="#F8FAFC"/>
+  <circle cx="165" cy="156" r="10" fill="#F8FAFC"/>
+  <path d="M94 116h68" stroke="#F8FAFC" stroke-width="10" stroke-linecap="round"/>
+</svg>

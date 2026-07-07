@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" role="img" aria-label="My Koleos LATAM">
+  <rect width="720" height="180" rx="34" fill="#101828"/>
+  <path d="M88 28 148 90 88 152 28 90 88 28Z" fill="none" stroke="#F8FAFC" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M58 101c5-17 14-25 30-25s25 8 30 25" fill="none" stroke="#38BDF8" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="64" cy="109" r="6" fill="#F8FAFC"/><circle cx="112" cy="109" r="6" fill="#F8FAFC"/>
+  <text x="190" y="82" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">My Koleos</text>
+  <text x="190" y="126" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="26">LATAM • Home Assistant</text>
+</svg>

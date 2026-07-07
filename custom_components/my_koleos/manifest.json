@@ -1,0 +1,17 @@
+{
+  "domain": "my_koleos",
+  "name": "My Koleos LATAM",
+  "codeowners": ["@pedroxns"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/pedroxns/my-koleos-ha",
+  "issue_tracker": "https://github.com/pedroxns/my-koleos-ha/issues",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "requirements": [],
+  "single_config_entry": false,
+  "version": "0.3.4",
+  "loggers": [
+    "custom_components.my_koleos"
+  ]
+}

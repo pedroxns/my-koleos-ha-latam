@@ -1,0 +1,192 @@
+{
+  "title": "My Koleos LATAM",
+  "config": {
+    "step": {
+      "user": {
+        "title": "My Koleos LATAM",
+        "description": "1. Copie e abra o link de login mostrado no primeiro campo.\\n2. Faça login na página oficial My Koleos/Renault.\\n3. Ao final, copie a URL de redirecionamento, ou somente o valor de code=.\\n\\nCole a URL final/código no segundo campo. Por segurança, esta integração não pede sua senha Renault dentro do Home Assistant.",
+        "data": {
+          "login_url": "1) Link de login para abrir no navegador",
+          "redirect_url_or_code": "2) URL final ou code=",
+          "country_code": "País"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reautenticar My Koleos LATAM",
+        "description": "Copie e abra o link de login mostrado no primeiro campo, faça login novamente e cole a URL final ou code= no segundo campo.",
+        "data": {
+          "login_url": "1) Link de login para abrir no navegador",
+          "redirect_url_or_code": "2) URL final ou code=",
+          "country_code": "País"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Não foi possível conectar ao serviço My Koleos/ECARX.",
+      "invalid_auth": "Falha de autenticação. Gere um code novo e tente novamente.",
+      "vin_missing": "Login funcionou, mas não consegui descobrir o VIN. Informe o VIN manualmente.",
+      "unknown": "Erro inesperado. Veja o log do Home Assistant."
+    },
+    "abort": {
+      "already_configured": "Já existe uma entrada, mas múltiplas entradas agora são permitidas. Tente novamente ou remova a entrada antiga se necessário.",
+      "reauth_successful": "Congrats, reauth successful",
+      "reauth_failed": "Não foi possível iniciar a reautenticação."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opções My Koleos LATAM",
+        "data": {
+          "adaptive_polling": "Usar polling adaptativo",
+          "active_scan_interval": "Intervalo quando o carro parece ativo (segundos)",
+          "idle_scan_interval": "Intervalo quando o carro parece parado (segundos)",
+          "update_session_on_poll": "Forçar update-session a cada atualização",
+          "enable_remote_commands": "Habilitar comandos remotos experimentais",
+          "allow_sensitive_remote_commands": "Permitir comandos sensíveis (destravar, partida, SRP/unpair)",
+          "remote_command_cooldown": "Cooldown entre comandos remotos (segundos)"
+        },
+        "description": "Use 15–30 s para acompanhar alterações rápidas quando o carro estiver ativo. Para reduzir chamadas à nuvem, use 60 s ou mais quando parado.\n\nComandos remotos são experimentais e ficam desativados por padrão. Habilite apenas para testes controlados.\n\nA partir da v0.2.2, múltiplas entradas/hubs são permitidos. Nos serviços, informe vin ou entry_id quando houver mais de uma entrada carregada."
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "refresh_now": {
+        "name": "Atualizar agora"
+      },
+      "refresh_tokens": {
+        "name": "Renovar sessão"
+      },
+      "find_my_car": {
+        "name": "Localizar carro"
+      },
+      "horn_lights": {
+        "name": "Buzina e luzes"
+      },
+      "hvac_start": {
+        "name": "Ligar climatização"
+      },
+      "hvac_stop": {
+        "name": "Desligar climatização"
+      }
+    },
+    "device_tracker": {
+      "location": {
+        "name": "Localização"
+      }
+    },
+    "sensor": {
+      "odometer": {
+        "name": "Odômetro"
+      },
+      "distance_to_empty": {
+        "name": "Autonomia"
+      },
+      "fuel_level_pct": {
+        "name": "Combustível percentual"
+      },
+      "fuel_level_liters": {
+        "name": "Volume de combustível"
+      },
+      "average_fuel_consumption": {
+        "name": "Consumo médio"
+      },
+      "avg_speed": {
+        "name": "Velocidade média"
+      },
+      "external_temperature": {
+        "name": "Temperatura externa"
+      },
+      "interior_temperature": {
+        "name": "Temperatura interna"
+      },
+      "coolant_temperature": {
+        "name": "Temperatura do motor"
+      },
+      "battery_12v_voltage": {
+        "name": "Bateria 12V"
+      },
+      "battery_12v_charge": {
+        "name": "Carga bateria 12V"
+      },
+      "hybrid_battery_charge": {
+        "name": "Carga bateria híbrida/EV"
+      },
+      "distance_to_service": {
+        "name": "Distância até revisão"
+      },
+      "days_to_service": {
+        "name": "Dias até revisão"
+      },
+      "tire_pressure_fl": {
+        "name": "Pressão pneu dianteiro esquerdo"
+      },
+      "tire_pressure_fr": {
+        "name": "Pressão pneu dianteiro direito"
+      },
+      "tire_pressure_rl": {
+        "name": "Pressão pneu traseiro esquerdo"
+      },
+      "tire_pressure_rr": {
+        "name": "Pressão pneu traseiro direito"
+      },
+      "last_update": {
+        "name": "Última atualização"
+      },
+      "next_wakeup": {
+        "name": "Próximo wake-up"
+      },
+      "poll_interval": {
+        "name": "Intervalo de atualização"
+      },
+      "power_mode": {
+        "name": "Modo de energia"
+      },
+      "engine_state": {
+        "name": "Estado do motor"
+      },
+      "svt_state": {
+        "name": "SVT"
+      },
+      "park_comfort_state": {
+        "name": "Park comfort"
+      },
+      "drift_mode_active": {
+        "name": "Drift mode"
+      },
+      "vehicle_alarm_status": {
+        "name": "Alarme disparado"
+      }
+    },
+    "binary_sensor": {
+      "engine_on": {
+        "name": "Motor"
+      },
+      "central_locked": {
+        "name": "Travamento central"
+      },
+      "driver_door_open": {
+        "name": "Porta motorista"
+      },
+      "passenger_door_open": {
+        "name": "Porta passageiro"
+      },
+      "rear_left_door_open": {
+        "name": "Porta traseira esquerda"
+      },
+      "rear_right_door_open": {
+        "name": "Porta traseira direita"
+      },
+      "trunk_open": {
+        "name": "Porta-malas"
+      },
+      "hood_open": {
+        "name": "Capô"
+      },
+      "activated": {
+        "name": "Serviço conectado ativo"
+      }
+    }
+  }
+}
