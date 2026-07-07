@@ -1,14 +1,126 @@
 
-## v0.3.4 pre-upload polish
-
-- Entity IDs for new installs are suggested as `sensor.koleos_*`, `switch.koleos_*`, `button.koleos_*`, etc.
-- Device name simplified to `Koleos` instead of `Renault Koleos ...`.
-- Setup form simplified: only redirect URL/code and country. Advanced/default values are handled internally or in Options.
-- The integration intentionally does not collect the Renault account password inside Home Assistant; login remains on the official Renault/Gigya page.
-
 # My Koleos LATAM - Home Assistant custom integration
 
-Versão experimental v0.3.4 `com_ac_final` / `brand_fix`.
+Created with heavy AI support, use it at your own risk.
+
+Renault Koleos is currently only working with Renault My Koleos app, but there are no HA integrations for this app, so I reversed engineered the Android app with AI support
+
+After install and Haos restart, add the integration and use the given URL to access Renaults page and autenticate with your e-mail and password, after the login the URL will change, copy the new one and paste it at the integration popup.
+
+All entities wiil be created with "domain.renault_koleos_*" name pattern.
+
+
+## Changes in this version
+
+- Fixes remote climate control to use the confirmed flow from the My Koleos LATAM app:
+
+- `PUT /remote-control/vehicle/telematics/{vin}`
+
+- `serviceId: RCE_2`
+
+- `command: start` / `stop`
+
+- `creator: tc`
+
+- `operationScheduling.duration = minutes * 6`
+
+- `serviceParameters` with real serialized keys: `rce.temp` and `rce.conditioner`
+
+- Removes the use of PAA for the instant climate control button/service.
+
+- Adds direct services:
+
+- `my_koleos.climate_start`
+
+- `my_koleos.climate_stop`
+
+- Maintains compatibility with `my_koleos.remote_command` using `command: hvac_start` / `hvac_stop`.
+
+- Adds `switch` entity for remote climate control. ## Services
+
+Start AC for 10 minutes at 22°C:
+
+```yaml
+service: my_koleos.climate_start
+data:
+
+temperature: 22
+minutes: 10
+```
+
+Turn off AC:
+
+```yaml
+service: my_koleos.climate_stop
+data: {}
+```
+
+With multiple entries, specify `entry_id` or `vin`:
+
+```yaml
+service: my_koleos.climate_start
+data:
+
+entry_id: "YOUR_ENTRY_ID"
+temperature: 22
+minutes: 10
+```
+
+## Notes
+
+- **Experimental remote commands** must be enabled in the integration options.
+
+- The climate control command is not marked as sensitive, but it still physically activates the car.
+
+- The lock/unlock/start commands remain protected by the sensitive commands option.
+
+- After copying the files, restart Home Assistant.
+
+## v0.3.4 - Logo/Brand Image Correction
+
+Home Assistant 2026.3+ expects local brand images in:
+
+```text
+custom_components/my_koleos/brand/icon.png
+custom_components/my_koleos/brand/logo.png
+
+```
+
+This version adds the correct `brand/` folder. The previous version used `brands/`, which is not the path used by the frontend for recent custom integrations.
+
+After copying the integration:
+
+1. Restart Home Assistant.
+
+2. Reload the page with a clear cache, if necessary.
+
+3. Test in an authenticated browser:
+
+```text
+/api/brands/integration/my_koleos/icon.png?placeholder=no
+/api/brands/integration/my_koleos/logo.png?placeholder=no
+```
+
+If it returns a 404 error, HA is not yet reading the `brand/` folder or the HA version is earlier than 2026.3.
+
+## Installation via HACS as a custom repository
+
+1. In Home Assistant, open **HACS**.
+
+2. Three-dot menu in the upper right corner.
+
+3. **Custom repositories**.
+
+4. Paste the GitHub repository URL.
+
+5. Category: **Integration**.
+
+6. Click **ADD** and install.
+
+After installation, restart Home Assistant.
+
+--------------------------------------------------------------
+--------------------------------------------------------------
 
 ## Mudanças desta versão
 
@@ -96,8 +208,3 @@ Se retornar 404, o HA ainda não está lendo a pasta `brand/` ou a versão do HA
 6. Clique em **ADD** e instale.
 
 Após a instalação, reinicie o Home Assistant.
-
-
-## Brand assets v0.3.4
-
-Atualizado para usar os arquivos fornecidos pelo usuário em `custom_components/my_koleos/brand/`: `icon.png`, `icon@2x.png`, `logo.png`, `logo@2x.png`, além de variantes `dark_*`.
