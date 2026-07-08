@@ -7,7 +7,15 @@ Renault Koleos is currently only working with Renault My Koleos app, but there a
 
 After install and Haos restart, add the integration and use the given URL to access Renaults page and autenticate with your e-mail and password, after the login the URL will change, copy the new one and paste it at the integration popup.
 
-All entities wiil be created with "domain.renault_koleos_*" name pattern.
+`All entities wiil be created with "domain.renault_koleos_*" name pattern.`
+
+## v0.3.6
+    - Add license info
+
+## v0.3.5
+
+- Fix Koleos location coordinates decoding scale;
+-     The old sersion was using a /10.000.000 scale for lat/long coordiantes, the new one uses the correct /3/600.000.
 
 
 ## Changes in this version
@@ -122,7 +130,15 @@ After installation, restart Home Assistant.
 --------------------------------------------------------------
 --------------------------------------------------------------
 
-## Mudanças desta versão
+## v0.3.6
+- Adicionadas informações de licensa.
+
+## v0.3.5
+
+- Correção de fator de correção para decodificação da localização;
+  - `A versão antiga usava a escala /10.000.000, a nova versão corrige a escala para /36.600.000`
+
+## v0.3.4
 
 - Corrige a climatização remota para usar o fluxo confirmado do app My Koleos LATAM:
   - `PUT /remote-control/vehicle/telematics/{vin}`
