@@ -9,6 +9,11 @@ After install and Haos restart, add the integration and use the given URL to acc
 
 `All entities wiil be created with "domain.renault_koleos_*" name pattern.`
 
+Remote commands are experimental and depend on Renault/ECARX cloud availability.  
+Climate start/stop has been validated on a real vehicle using the `RCE_2` remote command flow.
+
+Location tracking uses the same coordinate scale observed in the official My Koleos app.
+
 ## v0.3.6
 `Add license info`
 
@@ -129,6 +134,21 @@ After installation, restart Home Assistant.
 
 --------------------------------------------------------------
 --------------------------------------------------------------
+
+Criado com suporte intensivo de IA, use por sua conta e risco.
+
+O Renault Koleos atualmente funciona apenas com o aplicativo Renault - My Koleos, mas não há integrações com o Home Assistant para este aplicativo. Por isso, realizei engenharia reversa do aplicativo Android com suporte de IA.
+
+Após a instalação e reinicialização do Home Assistant, adicione a integração e use a URL fornecida para acessar a página da Renault e autenticar com seu e-mail e senha. Após o login, a URL será alterada; copie a nova URL e cole-a na janela pop-up da integração.
+
+`Todas as entidades serão criadas com o padrão de nome "domain.renault_koleos_*".`
+
+Esta integração foi testada com o Renault Koleos E-Tech vendido no Brasil / LATAM.
+
+Os comandos remotos são experimentais e dependem da disponibilidade da nuvem Renault/ECARX.  
+O comando de ligar/desligar a climatização foi validado em um veículo real usando o fluxo remoto `RCE_2`.
+
+O rastreamento de localização usa a mesma escala de coordenadas observada no app oficial My Koleos.
 
 ## v0.3.6
 - Adicionadas informações de licensa.
