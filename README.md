@@ -116,7 +116,7 @@ After copying the integration:
 
 If it returns a 404 error, HA is not yet reading the `brand/` folder or the HA version is earlier than 2026.3.
 
-## Installation via HACS as a custom repository
+## Installation via HACS as a custom repository - [![Open your Home Assistant instance and add this repository to HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=pedroxns&repository=my-koleos-ha-latam&category=integration)
 
 1. In Home Assistant, open **HACS**.
 
@@ -234,7 +234,7 @@ Após copiar a integração:
 Se retornar 404, o HA ainda não está lendo a pasta `brand/` ou a versão do HA é anterior a 2026.3.
 
 
-## Instalação via HACS como repositório customizado
+## Instalação via HACS como repositório customizado - [![Open your Home Assistant instance and add this repository to HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=pedroxns&repository=my-koleos-ha-latam&category=integration)
 
 1. No Home Assistant, abra **HACS**.
 2. Menu de três pontos no canto superior direito.
