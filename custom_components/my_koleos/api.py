@@ -132,7 +132,7 @@ def epoch_ms(value: Any) -> datetime | None:
     number = to_float(value)
     if number is None or number <= 0:
         return None
-    if number > 10_000_000_000:
+    if number > 3_600_000_000:
         number = number / 1000
     try:
         return datetime.fromtimestamp(number, UTC)
@@ -145,7 +145,7 @@ def decode_position(value: Any) -> float | None:
     number = to_float(value)
     if number is None:
         return None
-    return number / 10_000_000
+    return number / 3_600_000
 
 
 def encode_query(params: list[tuple[str, str]]) -> str:
@@ -1089,3 +1089,4 @@ class MyKoleosApi:
             f"/remote-control/vehicle/status/state/{quote(self.vin, safe='')}",
             query=[("userId", self.user_id)],
         )
+

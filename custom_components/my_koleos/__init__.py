@@ -502,3 +502,4 @@ async def async_unload_entry(hass: HomeAssistant, entry: MyKoleosConfigEntry) ->
             hass.services.async_remove(DOMAIN, SERVICE_DEBUG_ENTRIES)
             hass.data[DOMAIN][DATA_SERVICES_REGISTERED] = False
     return unload_ok
+

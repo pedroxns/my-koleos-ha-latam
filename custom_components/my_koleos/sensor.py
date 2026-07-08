@@ -352,3 +352,4 @@ async def async_setup_entry(
     """Set up My Koleos sensors."""
     coordinator: MyKoleosCoordinator = entry.runtime_data
     async_add_entities(MyKoleosSensor(coordinator, description) for description in SENSORS)
+

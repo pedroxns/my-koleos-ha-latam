@@ -70,3 +70,4 @@ class MyKoleosSwitch(MyKoleosEntity, SwitchEntity):
         """Stop remote climate."""
         await self.coordinator.async_send_remote_command(self.entity_description.off_command)
         await self.coordinator.async_request_refresh()
+

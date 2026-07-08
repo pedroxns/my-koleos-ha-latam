@@ -77,3 +77,4 @@ async def async_get_config_entry_diagnostics(
         "options": async_redact_data(entry.options, TO_REDACT),
         "runtime": async_redact_data(_summarize_data(data), TO_REDACT),
     }
+

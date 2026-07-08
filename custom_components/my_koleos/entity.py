@@ -73,3 +73,4 @@ def state_root(data: dict[str, Any] | None) -> dict[str, Any]:
         return {}
     state = data.get("state")
     return state if isinstance(state, dict) else {}
+

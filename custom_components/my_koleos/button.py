@@ -102,3 +102,4 @@ class MyKoleosButton(MyKoleosEntity, ButtonEntity):
             await self.coordinator.async_send_remote_command(command)
             return
         await self.coordinator.async_force_vehicle_update()
+

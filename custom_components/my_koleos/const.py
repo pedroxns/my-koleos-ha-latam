@@ -65,3 +65,4 @@ GIGYA_CLIENT_ID = "CVXws_Di4gM8nGxpxZO5PUoX"
 GIGYA_REDIRECT_URI = "https://my-rk-latam.renaultkoream.com/page/webLink/latamRedirect"
 GIGYA_CODE_CHALLENGE = "oKowxfuNEaj81UZkl1qv2c-xIxT_XPb6-eD55_3WpRg"
 GIGYA_STATE = "T196SkVBX3NtRn5aYVdJSUYxTTAzNS5JSDlJTEhiZDVfTzhPZE95bDZTQUZFU3puSlg"
+

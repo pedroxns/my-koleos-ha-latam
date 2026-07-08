@@ -262,3 +262,4 @@ class MyKoleosCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             raise ConfigEntryAuthFailed(f"Authentication failed: {exc}") from exc
         except MyKoleosConnectionError as exc:
             raise UpdateFailed(f"Connection failed: {exc}") from exc
+
