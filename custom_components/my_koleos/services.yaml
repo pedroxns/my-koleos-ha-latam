@@ -47,5 +47,4 @@ remote_command:
       name: Payload
       description: Optional command payload.
       required: false
-      selector:
-        object: 
+
