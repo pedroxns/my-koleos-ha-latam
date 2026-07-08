@@ -48,4 +48,4 @@ remote_command:
       description: Optional command payload.
       required: false
       selector:
-        object: {}
+        object: 
