@@ -10,12 +10,12 @@ After install and Haos restart, add the integration and use the given URL to acc
 `All entities wiil be created with "domain.renault_koleos_*" name pattern.`
 
 ## v0.3.6
-    - Add license info
+`Add license info`
 
 ## v0.3.5
 
 - Fix Koleos location coordinates decoding scale;
--     The old sersion was using a /10.000.000 scale for lat/long coordiantes, the new one uses the correct /3/600.000.
+`The old version was using a /10.000.000 scale for lat/long coordiantes, the new one uses the correct /3/600.000.`
 
 
 ## Changes in this version
