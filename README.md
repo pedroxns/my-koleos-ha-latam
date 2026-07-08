@@ -208,3 +208,7 @@ Se retornar 404, o HA ainda não está lendo a pasta `brand/` ou a versão do HA
 6. Clique em **ADD** e instale.
 
 Após a instalação, reinicie o Home Assistant.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
