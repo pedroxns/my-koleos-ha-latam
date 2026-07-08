@@ -1,220 +1,54 @@
-remote_command:
-  name: Enviar comando remoto experimental
-  description: Envia comando remoto experimental. res_state é somente leitura e usa primeiro ECARX status/state; comandos físicos ainda estão em mapeamento. Ative comandos remotos nas opções antes de usar. Com múltiplos hubs, informe vin ou entry_id.
-  fields:
-    command:
-      required: true
-      selector:
-        select:
-          options:
-            - lock_status
-            - lock
-            - unlock
-            - horn_lights
-            - hcb_settings
-            - hcb_soc_levels
-            - hcb_horn_lights
-            - hcb_lock
-            - hcb_unlock
-            - ecarx_status
-            - ecarx_state
-            - find_my_car
-            - hvac_start
-            - hvac_stop
-            - hvac_schedule
-            - update_hvac_schedule
-            - engine_start
-            - engine_stop
-            - res_state
-            - cockpit
-            - long_poll
-            - charge_start
-            - charge_schedule
-            - update_charge_schedule
-            - srp_initiates
-            - srp_sets
-            - unpairing_app
-    payload:
-      required: false
-      default: {}
-      selector:
-        object:
-    method:
-      required: false
-      selector:
-        select:
-          options:
-            - POST
-            - GET
-            - PUT
-            - DELETE
-    backend:
-      required: false
-      default: auto
-      selector:
-        select:
-          options:
-            - auto
-            - latam_auto
-            - latam_rest
-            - latam_web
-            - latam
-            - ecarx
-    merge_defaults:
-      required: false
-      default: true
-      selector:
-        boolean:
-    vin:
-      required: false
-      description: VIN do hub/veículo alvo quando houver mais de uma entrada carregada.
-      selector:
-        text:
-    entry_id:
-      required: false
-      description: ID da entrada do hub alvo. Use apenas quando houver duas entradas com o mesmo VIN.
-      selector:
-        text:
-
-send_proxy_command:
-  name: Enviar endpoint proxy bruto
-  description: Envia um endpoint proxy bruto para testes. Use com cuidado; payloads ainda estão sendo mapeados. Com múltiplos hubs, informe vin ou entry_id.
-  fields:
-    endpoint:
-      required: true
-      example: /api/1/proxy/hvacAction
-      selector:
-        text:
-    payload:
-      required: false
-      default: {}
-      selector:
-        object:
-    method:
-      required: false
-      default: POST
-      selector:
-        select:
-          options:
-            - POST
-            - GET
-            - PUT
-            - DELETE
-    backend:
-      required: false
-      default: auto
-      selector:
-        select:
-          options:
-            - auto
-            - latam_auto
-            - latam_rest
-            - latam_web
-            - latam
-            - ecarx
-    merge_defaults:
-      required: false
-      default: true
-      selector:
-        boolean:
-    vin:
-      required: false
-      description: VIN do hub/veículo alvo quando houver mais de uma entrada carregada.
-      selector:
-        text:
-    entry_id:
-      required: false
-      description: ID da entrada do hub alvo. Use apenas quando houver duas entradas com o mesmo VIN.
-      selector:
-        text:
-
-latam_login_code:
-  name: Atualizar token LATAM por code
-  description: Usa uma URL final /latamRedirect?code=... ou valor code= novo e ainda não usado para salvar o authToken LATAM necessário aos comandos remotos. Com múltiplos hubs, informe vin ou entry_id. URL de login: https://gigya-prod-us1.idconnect-am.renaultgroup.com/oidc/op/v1.0/4_yTFqPSsGxVyRXPZUM7t1Iw/authorize?response_type=code&ui_locales=pt-BR&client_id=CVXws_Di4gM8nGxpxZO5PUoX&redirect_uri=https%3A%2F%2Fmy-rk-latam.renaultkoream.com%2Fpage%2FwebLink%2FlatamRedirect&code_challenge_method=S256&code_challenge=oKowxfuNEaj81UZkl1qv2c-xIxT_XPb6-eD55_3WpRg&scope=openid%20email%20personId%20lang%20vehicle&state=T196SkVBX3NtRn5aYVdJSUYxTTAzNS5JSDlJTEhiZDVfTzhPZE95bDZTQUZFU3puSlg&prompt=login
-  fields:
-    redirect_url_or_code:
-      required: true
-      example: https://my-rk-latam.renaultkoream.com/page/webLink/latamRedirect?code=VALOR_REAL_DO_CODE
-      selector:
-        text:
-          multiline: true
-    country_code:
-      required: false
-      default: BR
-      selector:
-        text:
-    vin:
-      required: false
-      description: VIN do hub/veículo onde o authToken LATAM deve ser salvo.
-      selector:
-        text:
-    entry_id:
-      required: false
-      description: ID da entrada onde o authToken LATAM deve ser salvo. Use apenas quando houver duas entradas com o mesmo VIN.
-      selector:
-        text:
-
-create_login_url:
-  name: Criar URL de login LATAM
-  description: Cria uma notificação persistente com a URL de login para gerar um novo /latamRedirect?code=...
-  fields:
-    ui_locales:
-      required: false
-      default: pt-BR
-      selector:
-        text:
-
-debug_entries:
-  name: Diagnosticar entradas My Koleos
-  description: Cria uma notificação persistente listando entry_id, VIN e se cada hub carregado tem authToken LATAM salvo, sem expor tokens.
-  fields: {}
-
 climate_start:
-  name: Ligar climatização remota
-  description: Liga a climatização remota usando o fluxo confirmado com_ac_final via ECARX RCE_2 direto, sem PAA. Requer comandos remotos habilitados nas opções.
+  name: Start remote climate
+  description: Starts the Koleos remote climate control.
   fields:
     temperature:
+      name: Temperature
+      description: Target cabin temperature in Celsius.
       required: false
-      default: 22
+      example: 22
       selector:
         number:
           min: 16
           max: 30
           step: 1
-          unit_of_measurement: "°C"
           mode: box
     minutes:
+      name: Duration
+      description: Remote climate duration in minutes.
       required: false
-      default: 10
+      example: 10
       selector:
         number:
-          min: 1
+          min: 5
           max: 30
           step: 1
-          unit_of_measurement: min
           mode: box
-    vin:
-      required: false
-      description: VIN do hub/veículo alvo quando houver mais de uma entrada carregada.
-      selector:
-        text:
-    entry_id:
-      required: false
-      description: ID da entrada do hub alvo. Use apenas quando houver duas entradas com o mesmo VIN.
-      selector:
-        text:
 
 climate_stop:
-  name: Desligar climatização remota
-  description: Desliga a climatização remota usando o fluxo confirmado com_ac_final via ECARX RCE_2 direto. Requer comandos remotos habilitados nas opções.
+  name: Stop remote climate
+  description: Stops the Koleos remote climate control.
+
+remote_command:
+  name: Remote command
+  description: Sends an experimental remote command to the vehicle.
   fields:
-    vin:
-      required: false
-      description: VIN do hub/veículo alvo quando houver mais de uma entrada carregada.
+    command:
+      name: Command
+      description: Remote command to execute.
+      required: true
+      example: hvac_start
       selector:
-        text:
-    entry_id:
+        select:
+          options:
+            - hvac_start
+            - hvac_stop
+    payload:
+      name: Payload
+      description: Optional command payload.
       required: false
-      description: ID da entrada do hub alvo. Use apenas quando houver duas entradas com o mesmo VIN.
+      example:
+        temperature: 22
+        minutes: 10
       selector:
-        text:
+        object:
