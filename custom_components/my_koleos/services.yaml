@@ -47,8 +47,5 @@ remote_command:
       name: Payload
       description: Optional command payload.
       required: false
-      example:
-        temperature: 22
-        minutes: 10
       selector:
-        object:
+        object: {}
